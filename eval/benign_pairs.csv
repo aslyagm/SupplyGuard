@@ -1,0 +1,14 @@
+name,looks_like,note
+requests-oauthlib,requests,official extension
+requests-toolbelt,requests,official extension
+boto3,boto,successor package
+botocore,boto3,AWS SDK core
+pytest-cov,pytest,plugin
+pytest-mock,pytest,plugin
+jinja2,jinja,major version in name
+django-filter,django,plugin
+flask-cors,flask,plugin
+types-requests,requests,type stubs
+pyyaml,yaml,real package
+attrs,attr,real package
+six,sid,short name

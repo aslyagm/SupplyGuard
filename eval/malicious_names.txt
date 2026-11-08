@@ -1,0 +1,6 @@
+# Known malicious PyPI typosquats (names only, never install).
+# Seed examples from public incident reports; replace / extend with the
+# filtered OpenSSF list:  python eval/fetch_openssf.py
+colourama
+python3-dateutil
+jeilyfish

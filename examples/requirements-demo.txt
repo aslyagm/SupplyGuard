@@ -1,0 +1,11 @@
+# Demo file: mix of real packages and made-up imitations.
+# Do NOT pip install this file.
+requests>=2.31
+numpy
+reqeusts
+colorma
+python-dateutil
+pythondateutil
+rnatplotlib
+requests-oauthlib
+py-yaml

@@ -1,0 +1,11 @@
+# One programming task per line for `supplyguard slopcheck`.
+Extract tables from scanned PDF files
+Do sentiment analysis on Turkish tweets
+Convert Turkish lira amounts written in words to numbers
+Parse Apache access logs and detect brute-force login attempts
+Read data from a Siemens S7 PLC
+Generate an SBOM for a Python project
+Detect deepfake audio in a WAV file
+Control a DJI drone from Python
+Validate Turkish national ID numbers (TC kimlik no)
+Scrape product prices from Trendyol
