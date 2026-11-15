@@ -1,0 +1,19 @@
+- id: supplyguard
+  name: SupplyGuard dependency name check
+  description: >
+    Flag typosquatted and look-alike PyPI names in requirements files before
+    the packages are installed. Offline by default; no code is downloaded.
+  entry: supplyguard scan
+  language: python
+  files: (^|/)(requirements|constraints)([-_.].*)?\.txt$
+  pass_filenames: true
+  args: ["--offline", "--fail-on", "MEDIUM"]
+
+- id: supplyguard-sarif
+  name: SupplyGuard (SARIF report)
+  description: Write a SARIF report for CI/code-scanning upload.
+  entry: supplyguard scan
+  language: python
+  files: (^|/)(requirements|constraints)([-_.].*)?\.txt$
+  pass_filenames: true
+  args: ["--offline", "--fail-on", "none", "--sarif", "supplyguard.sarif"]

@@ -1,0 +1,18 @@
+# Example configuration for using SupplyGuard in another repository:
+#
+#   repos:
+#     - repo: https://github.com/<owner>/supplyguard
+#       rev: v0.2.0
+#       hooks:
+#         - id: supplyguard
+#
+# This file also configures the hooks used while developing SupplyGuard itself.
+repos:
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: python -m pytest -q
+        language: system
+        pass_filenames: false
+        always_run: true

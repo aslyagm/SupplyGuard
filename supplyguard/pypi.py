@@ -9,8 +9,10 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
+from . import __version__
+
 API = "https://pypi.org/pypi/{name}/json"
-USER_AGENT = "SupplyGuard/0.1 (BIL420 course project)"
+USER_AGENT = f"SupplyGuard/{__version__} (BIL420 course project)"
 CACHE_DIR = Path(".supplyguard_cache")
 
 

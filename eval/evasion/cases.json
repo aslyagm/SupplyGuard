@@ -1,0 +1,213 @@
+{
+  "description": "Adversarial cases for SupplyGuard. 'defended' cases must be flagged (target must match when given); 'control' cases must stay OK. 'known-gap' and 'known-fp' entries document current limits and never fail the suite; if they start behaving differently the runner reports an improvement.",
+  "cases": [
+    {
+      "id": "transposition",
+      "technique": "transposition",
+      "requirement": "reqeusts",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "Adjacent characters swapped."
+    },
+    {
+      "id": "keyboard",
+      "technique": "keyboard",
+      "requirement": "requwsts",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "One key to the right on a QWERTY keyboard."
+    },
+    {
+      "id": "omission",
+      "technique": "omission",
+      "requirement": "colorma",
+      "status": "defended",
+      "expected_target": "colorama",
+      "note": "One character removed."
+    },
+    {
+      "id": "insertion",
+      "technique": "insertion",
+      "requirement": "requessts",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "One duplicated character."
+    },
+    {
+      "id": "delimiter-hyphen",
+      "technique": "delimiter",
+      "requirement": "py-yaml",
+      "status": "defended",
+      "expected_target": "pyyaml",
+      "note": "Delimiter inserted into a popular name."
+    },
+    {
+      "id": "delimiter-removed",
+      "technique": "delimiter",
+      "requirement": "pythondateutil",
+      "status": "defended",
+      "expected_target": "python-dateutil",
+      "note": "Delimiter removed from a popular name."
+    },
+    {
+      "id": "homoglyph-rn",
+      "technique": "homoglyph",
+      "requirement": "rnatplotlib",
+      "status": "defended",
+      "expected_target": "matplotlib",
+      "note": "'rn' looks like 'm'."
+    },
+    {
+      "id": "homoglyph-l-i",
+      "technique": "homoglyph",
+      "requirement": "jeiiyfish",
+      "status": "defended",
+      "expected_target": "jellyfish",
+      "note": "'l' replaced by 'i' in several places."
+    },
+    {
+      "id": "homoglyph-zero",
+      "technique": "homoglyph",
+      "requirement": "0requests",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "Digit zero resembles the letter o."
+    },
+    {
+      "id": "homoglyph-digit-e",
+      "technique": "homoglyph",
+      "requirement": "requ3sts",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "Leetspeak substitution e -> 3."
+    },
+    {
+      "id": "substitution",
+      "technique": "substitution",
+      "requirement": "tensorflov",
+      "status": "defended",
+      "expected_target": "tensorflow",
+      "note": "Any other one-character swap."
+    },
+    {
+      "id": "mixed-case",
+      "technique": "normalization",
+      "requirement": "ReQeUsTs",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "PEP 503 normalization runs before matching."
+    },
+    {
+      "id": "affix-prefix",
+      "technique": "affix",
+      "requirement": "python-requests",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "Known prefix added. Only LOW offline, but still a signal."
+    },
+    {
+      "id": "affix-suffix",
+      "technique": "affix",
+      "requirement": "requests-py",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "Known suffix added."
+    },
+    {
+      "id": "combosquat",
+      "technique": "combosquat",
+      "requirement": "requests-oauthlib2",
+      "status": "defended",
+      "expected_target": "requests-oauthlib",
+      "note": "Popular name extended with a version-like suffix."
+    },
+    {
+      "id": "extras",
+      "technique": "requirement-syntax",
+      "requirement": "reqeusts[security]",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "Extras must not hide the project name."
+    },
+    {
+      "id": "version-pin",
+      "technique": "requirement-syntax",
+      "requirement": "reqeusts==2.31.0",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "Version specifier must not hide the project name."
+    },
+    {
+      "id": "inline-comment",
+      "technique": "requirement-syntax",
+      "requirement": "reqeusts  # looks normal",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "Inline comments must not hide the project name."
+    },
+    {
+      "id": "direct-reference",
+      "technique": "requirement-syntax",
+      "requirement": "reqeusts @ https://example.com/reqeusts-1.0-py3-none-any.whl",
+      "status": "defended",
+      "expected_target": "requests",
+      "note": "PEP 508 direct references still carry the project name."
+    },
+    {
+      "id": "random-name",
+      "technique": "unrelated-name",
+      "requirement": "totally-random-pkg",
+      "status": "known-gap",
+      "expected_target": null,
+      "note": "A fresh random name is invisible to a similarity check; OSV lookup is required."
+    },
+    {
+      "id": "dependency-confusion",
+      "technique": "dependency-confusion",
+      "requirement": "acme-internal-utils",
+      "status": "known-gap",
+      "expected_target": null,
+      "note": "A private name registered publicly has no typo signal. Needs an internal allowlist/provenance policy."
+    },
+    {
+      "id": "unicode-homoglyph",
+      "technique": "unicode",
+      "requirement": "requ\u0435sts",
+      "status": "known-gap",
+      "expected_target": null,
+      "note": "Cyrillic 'e' is rejected by the parser (PyPI names are ASCII), so the line is skipped."
+    },
+    {
+      "id": "unpopular-base",
+      "technique": "reference-coverage",
+      "requirement": "abom-cl1",
+      "status": "known-gap",
+      "expected_target": null,
+      "note": "The imitated project ('abom-cli') is outside the top-15k reference list."
+    },
+    {
+      "id": "legit-alias-yaml",
+      "technique": "legit-alias",
+      "requirement": "yaml",
+      "status": "known-fp",
+      "expected_target": "pyaml",
+      "note": "The real 'yaml' project is an alias of PyYAML; requirements should use PyYAML."
+    },
+    {
+      "id": "legit-alias-pillow",
+      "technique": "legit-alias",
+      "requirement": "PIL",
+      "status": "known-fp",
+      "expected_target": "pilk",
+      "note": "PIL is the historical import name of Pillow and is not a PyPI project."
+    },
+    {
+      "id": "popular-similar-name",
+      "technique": "reference-membership",
+      "requirement": "attrs",
+      "status": "control",
+      "expected_target": null,
+      "note": "A popular name must not be flagged merely because 'attr' is similar."
+    }
+  ]
+}

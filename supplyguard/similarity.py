@@ -1,6 +1,31 @@
-"""String distance functions."""
+"""String distance functions and cheap pre-filters."""
 
 from __future__ import annotations
+
+# Character-count vectors are used as a cheap lower bound before running the
+# full O(n*m) edit distance.  PyPI names are ASCII (letters, digits, -), but
+# anything else is folded into a single "other" bucket, which can only make
+# the bound weaker, never skip a real match.
+_ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789-"
+_INDEX = {c: i for i, c in enumerate(_ALPHABET)}
+_OTHER = len(_ALPHABET)
+
+
+def char_counts(s: str) -> tuple[int, ...]:
+    """Count characters of `s` over a small fixed alphabet."""
+    counts = [0] * (_OTHER + 1)
+    for c in s:
+        counts[_INDEX.get(c, _OTHER)] += 1
+    return tuple(counts)
+
+
+def bag_distance(a: tuple[int, ...], b: tuple[int, ...]) -> int:
+    """Lower bound on edit distance: unmatched character occurrences.
+
+    Each insertion/deletion/substitution can fix at most one unmatched
+    character, so if this value is greater than k the edit distance is too.
+    """
+    return sum(max(0, x - y) for x, y in zip(a, b))
 
 
 def levenshtein(a: str, b: str) -> int:

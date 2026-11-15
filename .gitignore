@@ -1,6 +1,10 @@
 __pycache__/
 *.py[cod]
 *.egg-info/
+.coverage
+htmlcov/
+.ruff_cache/
+.mypy_cache/
 build/
 dist/
 .venv/
@@ -15,6 +19,8 @@ venv/
 reports/
 eval/results/
 eval/openssf/
+supplyguard.json
+supplyguard.sarif
 
 # course documents (kept locally, not in repo)
 *.docx
